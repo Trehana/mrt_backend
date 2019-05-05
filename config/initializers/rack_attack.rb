@@ -1,5 +1,4 @@
 class Rack::Attack
-
   # `Rack::Attack` is configured to use the `Rails.cache` value by default,
   # but you can override that by setting the `Rack::Attack.cache.store` value
   Rack::Attack.cache.store = ActiveSupport::Cache::MemoryStore.new
@@ -10,12 +9,10 @@ class Rack::Attack
   end
 
   # Allow an IP address to make 5 requests every 5 seconds
-  throttle('req/ip', limit: 5, period: 5) do |req|
-    req.ip
-  end
+  throttle('req/ip', limit: 5, period: 5, &:ip)
 
   # Send the following response to throttled clients
-  self.throttled_response = ->(env) {
+  self.throttled_response = lambda { |env|
     retry_after = (env['rack.attack.match_data'] || {})[:period]
     [
       429,

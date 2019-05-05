@@ -3,7 +3,7 @@ class User < ApplicationRecord
   before_create do |user|
     user.api_key = user.generate_api_key
   end
-  
+
   # Generate a unique API key
   def generate_api_key
     loop do

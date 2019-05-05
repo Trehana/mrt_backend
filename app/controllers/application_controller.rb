@@ -2,10 +2,10 @@ class ApplicationController < ActionController::API
   include ActionController::Serialization
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_action :authenticate, except: [:index_public]
+  before_action :authenticate, except: %i[index_public index]
   before_action :throttle_token
 
-    protected
+  protected
 
   def authenticate
     authenticate_token || render_unauthorized
