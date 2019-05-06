@@ -11,18 +11,121 @@ class Path
     @vertices = {}
   end
 
+  # This methods get the routes based on the parameters given
+  def get_routes(params)
+    graph_data = create_data(params)
+    if graph_data.is_a?(Array)
+      graph_data.each do |data|
+        add_vertex(data[0][0], data[0][1])
+      end
+      path_array = shortest_path(params[:source], params[:destination])
+      if path_array.is_a?(Array)
+        get_path_description(path_array, params)
+      else
+        path_array
+      end
+    else
+      graph_data
+    end
+  end
+
+  # This method adds veritices to graph
+  def add_vertex(name, edges)
+    @vertices[name] = edges
+  end
+
+  def shortest_path(source, destination)
+    return { message: 'Start Station Not Available' } unless @vertices.key?(source)
+    return { message: 'Destination Station Not Available' } unless @vertices.key?(destination)
+
+    maxint = (2**(0.size * 8 - 2) - 1)
+    distances = {} # Distance from start to node
+    previous = {} #  Previous node in optimal path from source
+    nodes = PriorityQueue.new # Priority queue of all nodes in Graph
+
+    @vertices.each do |vertex, _value|
+      if vertex == source # Set root node as distance of 0
+        distances[vertex] = 0
+        nodes[vertex] = 0
+      else
+        distances[vertex] = maxint
+        nodes[vertex] = maxint
+      end
+      previous[vertex] = nil
+    end
+
+    while nodes
+      smallest = nodes.delete_min_return_key # Vertex in nodes with smallest distance in distances
+
+      if smallest == destination # If the closest node is our target we're done so print the path
+        path = []
+        while previous[smallest] # Traverse through nodes til we reach the root which is 0
+          path.push(smallest)
+          smallest = previous[smallest]
+        end
+        @total_travel_time = distances[destination]
+        return path
+      end
+
+      break if smallest.nil? || (distances[smallest] == maxint) # All remaining vertices are inaccessible from source
+
+      @vertices[smallest].each do |neighbor, _value| # Look at all the nodes that this vertex is attached to
+        alt = distances[smallest] + @vertices[smallest][neighbor] # Alternative path distance
+        next unless alt < distances[neighbor] # If there is a new shortest path update our priority queue
+
+        distances[neighbor] = alt
+        previous[neighbor] = smallest
+        nodes[neighbor] = alt
+      end
+    end
+    distances.inspect
+  end
+
+  private
+
+  def create_data(params)
+    is_weekday = true
+    time_period = ''
+    # Validation of the start time entered.
+    begin
+      start_date = params[:start_time].to_date
+    rescue ArgumentError
+      return { message: 'Invalid Start Time' }
+    end
+
+    start_time = params[:start_time].to_time.strftime('%H:%M')
+    is_shortest_Path = params[:shortest_route_without_time]
+
+    # Determining the start time belonging time period.
+    is_weekday = false if start_date.saturday? || start_date.sunday? # Checking if the start day is a weekday
+    if (start_time >= '06:00' && start_time <= '09:00') || (start_time >= '18:00' && start_time <= '21:00') # Checking if the start time is peak
+      time_period = 'peak'
+    elsif (start_time >= '22:00' && start_time <= '23:59') || (start_time >= '00:00' && start_time <= '6:00') # Checking if the start time is night
+      time_period = 'night'
+    else
+      time_period = 'offpeak'
+    end
+    ##########
+    # Creating timeline of the train lines.
+    create_timeline(time_period, is_weekday, is_shortest_Path)
+    # Reading the stations from the csv.
+    read_stations(start_date)
+    # Generating the available station graph.
+    get_available_station_graph
+  end
+
   # This method creates a timeline of the train lines based on the availablity of the stations and waiting times according to the start time entered.
   # ['NS', 1, 12, 1000] the first element represents line code. second element represents availablity(boolean).3rd and 4th elements represent NS 12 minutes waiting per station and 15minutes interchange time.
   # This details were formated according to the Bonus details given in the challenge. However to accomadate more train lines we could add this details to db with the above fields.
-  def create_timeline(time_period, isWeekday, isShortestPath)
-    if isShortestPath == 'true'
+  def create_timeline(time_period, is_weekday, is_shortest_Path)
+    if is_shortest_Path == 'true'
       # This timeline is based on the shortest path to destination station without time consideration hence, the time for the interchange is assumed a large amount so the algorhythm calculates the path with least number of interchanges.
       @timeline =
         [['NS', 1, 10, 1000], ['EW', 1, 10, 1000], ['CG', 1, 10, 1000], ['NE', 1, 10, 1000],
          ['CC', 1, 10, 1000], ['CE', 1, 10, 1000], ['DT', 1, 10, 1000], ['TE', 1, 10, 1000]]
     else
       # This timeline is based on the shortest path with time consideration.
-      if time_period == 'peak' && isWeekday
+      if time_period == 'peak' && is_weekday
         @timeline =
           [['NS', 1, 12, 15], ['EW', 1, 10, 15], ['CG', 1, 10, 15], ['NE', 1, 12, 15],
            ['CC', 1, 10, 15], ['CE', 1, 10, 15], ['DT', 1, 10, 15], ['TE', 1, 10, 15]]
@@ -127,89 +230,6 @@ class Path
     station_list # The station list for the graph. formatted as [[["NS1", {"NS2"=>12, "EW24"=>15}]]]
   end
 
-  def create_data(params)
-    isWeekday = true
-    time_period = ''
-    # Validation of the start time entered.
-    begin
-      start_date = params[:start_time].to_date
-    rescue ArgumentError
-      return { message: 'Invalid Start Time' }
-    end
-
-    start_time = params[:start_time].to_time.strftime('%H:%M')
-    isShortestPath = params[:shortest_route_without_time]
-
-    # Determining the start time belonging time period.
-    isWeekday = false if start_date.saturday? || start_date.sunday? # Checking if the start day is a weekday
-    if (start_time >= '06:00' && start_time <= '09:00') || (start_time >= '18:00' && start_time <= '21:00') # Checking if the start time is peak
-      time_period = 'peak'
-    elsif (start_time >= '22:00' && start_time <= '23:59') || (start_time >= '00:00' && start_time <= '6:00') # Checking if the start time is night
-      time_period = 'night'
-    else
-      time_period = 'offpeak'
-    end
-    ##########
-    # Creating timeline of the train lines.
-    create_timeline(time_period, isWeekday, isShortestPath)
-    # Reading the stations from the csv.
-    read_stations(start_date)
-    # Generating the available station graph.
-    get_available_station_graph
-  end
-
-  # This method adds veritices to graph
-  def add_vertex(name, edges)
-    @vertices[name] = edges
-  end
-
-  def shortest_path(source, destination)
-    return { message: 'Start Station Not Available' } unless @vertices.key?(source)
-    return { message: 'Destination Station Not Available' } unless @vertices.key?(destination)
-
-    maxint = (2**(0.size * 8 - 2) - 1)
-    distances = {} # Distance from start to node
-    previous = {} #  Previous node in optimal path from source
-    nodes = PriorityQueue.new # Priority queue of all nodes in Graph
-
-    @vertices.each do |vertex, _value|
-      if vertex == source # Set root node as distance of 0
-        distances[vertex] = 0
-        nodes[vertex] = 0
-      else
-        distances[vertex] = maxint
-        nodes[vertex] = maxint
-      end
-      previous[vertex] = nil
-    end
-
-    while nodes
-      smallest = nodes.delete_min_return_key # Vertex in nodes with smallest distance in distances
-
-      if smallest == destination # If the closest node is our target we're done so print the path
-        path = []
-        while previous[smallest] # Traverse through nodes til we reach the root which is 0
-          path.push(smallest)
-          smallest = previous[smallest]
-        end
-        @total_travel_time = distances[destination]
-        return path
-      end
-
-      break if smallest.nil? || (distances[smallest] == maxint) # All remaining vertices are inaccessible from source
-
-      @vertices[smallest].each do |neighbor, _value| # Look at all the nodes that this vertex is attached to
-        alt = distances[smallest] + @vertices[smallest][neighbor] # Alternative path distance
-        next unless alt < distances[neighbor] # If there is a new shortest path update our priority queue
-
-        distances[neighbor] = alt
-        previous[neighbor] = smallest
-        nodes[neighbor] = alt
-      end
-    end
-    distances.inspect
-  end
-
   # This method formats the route description according to the needed output.
   def get_route_description(route, params)
     @descriptions = {} # Hash to store station code along with station names.
@@ -228,8 +248,8 @@ class Path
     @descriptions.each do |key, value|
       route_description << "Take #{key[0, 2]} line from #{value} to " unless key == params[:destination]
       unless description_index.zero?
-        if route_description[description_index - 1].include? value 
-          if key[0, 2] == params[:destination][0, 2] # Checks whether the destination station is a interchange station 
+        if route_description[description_index - 1].include? value
+          if key[0, 2] == params[:destination][0, 2] # Checks whether the destination station is a interchange station
             route_description[description_index - 1] = ''
             @timeline.each do |train_line|
               if train_line[0] == params[:destination][0, 2]
@@ -263,22 +283,5 @@ class Path
     message_body.store('Route', route)
     message_body.store('Route Description', route_description)
     message_body
-  end
-
-  def get_routes(params)
-    graph_data = create_data(params)
-    if graph_data.is_a?(Array)
-      graph_data.each do |data|
-        add_vertex(data[0][0], data[0][1])
-      end
-      path_array = shortest_path(params[:source], params[:destination])
-      if path_array.is_a?(Array)
-        get_path_description(path_array, params)
-      else
-        path_array
-      end
-    else
-      graph_data
-    end
   end
 end
