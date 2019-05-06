@@ -23,6 +23,7 @@ rake db:setup
 ```ruby
 u = User.create({name: "Trehana Fernando", email: "test@gmail.com"})
 ap u
+by describing u we can get the Authorization token of the user created.
 ```
 *next typing*
 ```
@@ -46,6 +47,13 @@ Launch a web browser and go to `http://localhost:3000/docs`
 
 The API exposed for Paths is
 http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/paths/Api_V1_Paths_index
+
+## Parameters
+1. Authorization - Provide the Authorization token of the User. Eg: Token token=lFTReOwz7vaZySdrxWzCPQtt"
+2. Source - Starting station eg: EW27
+3. Destination - Destination station eg:DT12
+4. Start Time - Intended Starting Time of the Journey eg: 2019-05-10T07:00
+5. Shortest Route Without Time - If this parameter is set to 'True' we can get the Shortest Route to Destination station with the least number of Line interchanges. Or else if this is set to 'False' we can the Fastest Route to Destination 
 
 
 ## Screenshots
@@ -79,7 +87,7 @@ To protect API from DDoS, brute force attacks. I have used `Rack::Attack`
 ```ruby
 gem 'rack-attack'
 ```
-## Algorhytms used
+## Algorithm used
 Dijkstra’s shortest path algorithm
 
 ## Assumptions

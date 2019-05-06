@@ -249,7 +249,7 @@ class Path
       route_description << "Take #{key[0, 2]} line from #{value} to " unless key == params[:destination]
       unless description_index.zero?
         if route_description[description_index - 1].include? value
-          if key[0, 2] == params[:destination][0, 2] # Checks whether the destination station is a interchange station
+          if key == params[:destination] # Checks whether the destination station is a interchange station
             route_description[description_index - 1] = ''
             @timeline.each do |train_line|
               if train_line[0] == params[:destination][0, 2]
