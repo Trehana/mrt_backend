@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5e74711-6fb5-4542-9f99-04cdb1fe2bb2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/graphs_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/graphs_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/graph.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/graph.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/apidocs/api/v1/graphs.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/apidocs/api/v1/graphs.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -37,8 +36,8 @@
       <file leaf-file-name="graph.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/graph.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="133" selection-start-line="133" selection-end-line="133" />
+            <state relative-caret-position="124">
+              <caret line="188" selection-start-line="188" selection-end-line="188" />
             </state>
           </provider>
         </entry>
@@ -344,7 +343,7 @@
       <option name="presentableId" value="Default" />
       <updated>1557044559514</updated>
       <workItem from="1557044560720" duration="14569000" />
-      <workItem from="1557110740621" duration="450000" />
+      <workItem from="1557110740621" duration="600000" />
     </task>
     <servers />
   </component>
@@ -360,11 +359,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15019000" />
+    <option name="totallyTimeSpent" value="15169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="43" width="1406" height="798" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2536657" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -399,7 +397,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/models/graph.rb</url>
-          <line>202</line>
+          <line>188</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
@@ -424,27 +422,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/models/graph.rb</url>
-          <line>272</line>
+          <line>274</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/models/graph.rb</url>
-          <line>271</line>
+          <line>273</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/models/graph.rb</url>
-          <line>133</line>
+          <line>134</line>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/models/graph.rb</url>
-          <line>135</line>
+          <line>136</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/app/models/graph.rb</url>
-          <line>125</line>
+          <line>126</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
@@ -510,8 +508,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/graph.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
+        <state relative-caret-position="124">
+          <caret line="188" selection-start-line="188" selection-end-line="188" />
         </state>
       </provider>
     </entry>

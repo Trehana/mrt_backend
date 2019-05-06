@@ -30,13 +30,6 @@
         {
           "parameters": [
             {
-              "paramType": "header",
-              "name": "Authorization",
-              "type": "string",
-              "description": "Authentication token",
-              "required": true
-            },
-            {
               "paramType": "form",
               "name": "user[name]",
               "type": "string",
@@ -81,13 +74,6 @@
         {
           "parameters": [
             {
-              "paramType": "header",
-              "name": "Authorization",
-              "type": "string",
-              "description": "Authentication token",
-              "required": true
-            },
-            {
               "paramType": "path",
               "name": "id",
               "type": "integer",
@@ -116,24 +102,6 @@
           ],
           "nickname": "Api::V1::Users#show",
           "method": "get"
-        }
-      ]
-    },
-    {
-      "path": "/v1/users/{id}",
-      "operations": [
-        {
-          "parameters": [
-            {
-              "paramType": "header",
-              "name": "Authorization",
-              "type": "string",
-              "description": "Authentication token",
-              "required": true
-            }
-          ],
-          "nickname": "Api::V1::Users#update",
-          "method": "patch"
         }
       ]
     }
