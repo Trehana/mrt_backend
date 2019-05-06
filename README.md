@@ -77,5 +77,7 @@ gem 'rack-attack'
 Dijkstra’s shortest path algorithm
 
 ## Screenshots
-![Rails 5 API  Swagger UI for documentation](https://c7.staticflickr.com/9/8548/29979999550_7980b15a45_b.jpg)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.40.33%20AM.png)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.41.06%20AM.png)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/3.png)
 
