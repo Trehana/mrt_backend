@@ -49,7 +49,8 @@ http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/grap
 
 
 ## Screenshots
-![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.41.06%20AM.png)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/api_interface.png)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/api_interface_2.png)
 ![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.40.33%20AM.png)
 ![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/3.png)
 
