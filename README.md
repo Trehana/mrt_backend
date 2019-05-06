@@ -44,13 +44,12 @@ Rails 5.1.7
 I have used Rails-based REST API using Swagger UI
 Launch a web browser and go to `http://localhost:3000/docs`
 
-The API exposed for Graphs is
-http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/graphs/Api_V1_Graphs_index
+The API exposed for Paths is
+http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/paths/Api_V1_Paths_index
 
 
 ## Screenshots
-![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/api_interface.png)
-![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/api_interface_2.png)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.40.33%20AM.png)
 ![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.40.33%20AM.png)
 ![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/3.png)
 
