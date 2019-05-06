@@ -1,6 +1,6 @@
 # Singapore MRT Backend API
 
-The API is based on Rails 5 API to find and display one or more routes from a specified origin to a specified destination, ordered by Shortest Path and Time consideration
+The API is based on Rails 5 API to find and display one or more routes from a specified origin to a specified destination, ordered by Shortest Path without time consideration(least line transfers) and Shortest Path with Time consideration (Fastest Route)
 
 ## Setting up Rails 5
 

@@ -8,7 +8,7 @@ module Api::V1
       param :query, :source, :string, :required, 'Source (Eg: NS1)'
       param :query, :destination, :string, :required, 'Destination (Eg: EW7)'
       param :query, :start_time, :string, :required, 'Start Time (Eg:"YYYY-MM-DDThh:mm" format, e.g. 2019-01-31T16:00)'
-      param :query, :shortest_route_without_time, :boolean, :required, 'Shortest Route without time consideration'
+      param :query, :shortest_route_without_time, :boolean, :required, 'Shortest Route without time consideration(Least Line Transfers)'
       response :unauthorized
       response :not_acceptable, 'The request you made is not acceptable'
       response :requested_range_not_satisfiable

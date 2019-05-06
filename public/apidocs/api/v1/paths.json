@@ -41,7 +41,7 @@
               "paramType": "query",
               "name": "shortest_route_without_time",
               "type": "boolean",
-              "description": "Shortest Route without time consideration",
+              "description": "Shortest Route without time consideration(Least Line Transfers)",
               "required": true
             }
           ],
