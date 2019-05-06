@@ -47,6 +47,12 @@ Launch a web browser and go to `http://localhost:3000/docs`
 The API exposed for Graphs is
 http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/graphs/Api_V1_Graphs_show
 
+
+## Screenshots
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.41.06%20AM.png)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.40.33%20AM.png)
+![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/3.png)
+
 * How to run the test suite 
 I have used rspec for testing
 cd mrt_backend
@@ -76,8 +82,10 @@ gem 'rack-attack'
 ## Algorhytms used
 Dijkstra’s shortest path algorithm
 
-## Screenshots
-![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.41.06%20AM.png)
-![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/Screen%20Shot%202019-05-06%20at%2011.40.33%20AM.png)
-![MRT API  Swagger UI for documentation](https://github.com/Trehana/mrt_backend/blob/master/public/uploads/screenshots/3.png)
+## Assumptions
+1. Travel time and Waitng will remain same even though the time shifts from a Peak Time to off peak time while travelling.
+2. Canberra Station opening date was not given. I have modified the StationMap.csv and added opening date as 1st December 2019.
+
+## Future Improvements
+Adding a model to collect Train line details such as Peak Travel Time, Off Peak Travel Time, Night Travel Time. Interchange Time, Night Time Availablity. By adding this we can create the availble station timeline dynamically and add more train lines to the system in the future.
 
