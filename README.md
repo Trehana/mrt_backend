@@ -44,6 +44,8 @@ Rails 5.1.7
 I have used Rails-based REST API using Swagger UI
 Launch a web browser and go to `http://localhost:3000/docs`
 
+The API exposed for Graphs is
+http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/graphs/Api_V1_Graphs_show
 
 * How to run the test suite 
 I have used rspec for testing
@@ -71,3 +73,9 @@ To protect API from DDoS, brute force attacks. I have used `Rack::Attack`
 ```ruby
 gem 'rack-attack'
 ```
+## Algorhytms used
+Dijkstra’s shortest path algorithm
+
+## Screenshots
+![Rails 5 API  Swagger UI for documentation](https://c7.staticflickr.com/9/8548/29979999550_7980b15a45_b.jpg)
+
