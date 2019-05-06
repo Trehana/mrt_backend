@@ -1,0 +1,128 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://127.0.0.1:3000",
+  "resourcePath": "graphs",
+  "apis": [
+    {
+      "path": "/v1/graphs",
+      "operations": [
+        {
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::Graphs#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/v1/graphs",
+      "operations": [
+        {
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::Graphs#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/v1/graphs/{id}",
+      "operations": [
+        {
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "source",
+              "type": "string",
+              "description": "Source (Eg: NS1)",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "destination",
+              "type": "string",
+              "description": "Destination (Eg: EW7)",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "start_time",
+              "type": "string",
+              "description": "Start Time (Eg:\"YYYY-MM-DDThh:mm\" format, e.g. 2019-01-31T16:00)",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "shortest_route_without_time",
+              "type": "boolean",
+              "description": "Shortest Route without time consideration",
+              "required": true
+            }
+          ],
+          "summary": "Fetches the routes",
+          "notes": "This Fetches the best routes",
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "The request you made is not acceptable"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Requested Range Not Satisfiable"
+            }
+          ],
+          "nickname": "Api::V1::Graphs#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/v1/graphs/{id}",
+      "operations": [
+        {
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "nickname": "Api::V1::Graphs#update",
+          "method": "patch"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}
