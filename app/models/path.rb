@@ -1,7 +1,7 @@
 require 'priority_queue'
 require 'csv'
 
-class Graph
+class Path
   @timeline = []
   @stations = []
   @timeline = []

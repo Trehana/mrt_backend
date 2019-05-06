@@ -8,7 +8,7 @@
       "description": "User Management"
     },
     {
-      "path": "/apidocs/api/v1/graphs.{format}",
+      "path": "/apidocs/api/v1/paths.{format}",
       "description": "Graph Management"
     }
   ],

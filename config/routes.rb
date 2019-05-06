@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
     namespace :v1 do
       resources :users
-      resources :graphs
+      resources :paths
     end
   end
 end

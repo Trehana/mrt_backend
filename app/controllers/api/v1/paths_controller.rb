@@ -1,6 +1,6 @@
 module Api::V1
-  class GraphsController < ApiController
-    swagger_controller :graphs, 'Graph Management'
+  class PathsController < ApiController
+    swagger_controller :paths, 'Graph Management'
 
     swagger_api :index do
       summary 'Fetches the routes'
@@ -14,10 +14,10 @@ module Api::V1
       response :requested_range_not_satisfiable
     end
 
-    # GET /v1/graphs
+    # GET /v1/
     def index
-      @graph = Graph.new
-      routes = @graph.get_routes(params)
+      @path = Path.new
+      routes = @path.get_routes(params)
       if routes.present?
         render json: routes
       else
