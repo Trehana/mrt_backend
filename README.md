@@ -45,7 +45,7 @@ I have used Rails-based REST API using Swagger UI
 Launch a web browser and go to `http://localhost:3000/docs`
 
 The API exposed for Graphs is
-http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/graphs/Api_V1_Graphs_show
+http://localhost:3000/api_html/dist/index.html?url=/apidocs/api-docs.json#!/graphs/Api_V1_Graphs_index
 
 
 ## Screenshots
