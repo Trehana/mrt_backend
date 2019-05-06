@@ -36,7 +36,7 @@ curl -H "Authorization: Token token=[token]" http://localhost:3000/v1/users
 *example*
 ```
 curl -H "Authorization: Token token=3Hu9orST5sKDHUPJBwjbogtt" http://localhost:3000/v1/users
-
+```
 * System dependencies
 Rails 5.1.7
 
@@ -50,4 +50,24 @@ I have used rspec for testing
 cd mrt_backend
 rake spec
 
+* Addtional Configurations Used
+## Serializing API Output
+To control what data gets served through the API i have used Active Model Serializers
+```
+gem 'active_model_serializers'
+```
+I have serialized User Model
 
+## Enabling CORS
+To enable Cross-Origin Resource Sharing (CORS), in order to make cross-origin AJAX requests possible
+I have added 
+```ruby
+gem 'rack-cors'
+```
+
+## Rate Limiting and Throttling
+To protect API from DDoS, brute force attacks. I have used `Rack::Attack`
+
+```ruby
+gem 'rack-attack'
+```
